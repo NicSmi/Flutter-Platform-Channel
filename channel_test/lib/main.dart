@@ -55,6 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> _getBatteryLevel() async {
     String batteryLevel;
     try {
+      //var res = platform.setMethodCallHandler('notif');
       final int result = await platform.invokeMethod('getBatteryLevel');
       batteryLevel = 'Battery level at $result % .';
     } on PlatformException catch (e) {
@@ -66,7 +67,17 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  @override
+  Future<void> _getNotification() async {
+    try {
+      // Used to trigger notification 
+
+    } on PlatformException catch (e) {
+      print("Could not display notification ");
+    }
+  }
+
+
+@override
 Widget build(BuildContext context) {
   return Material(
     child: Center(
