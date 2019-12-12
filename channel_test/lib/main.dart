@@ -47,6 +47,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   static const platform = const MethodChannel('samples.flutter.dev/battery');
+  static const platformn = const MethodChannel('samples.flutter.dev/notification');
 
   // Get battery level.
 
@@ -57,19 +58,20 @@ class _MyHomePageState extends State<MyHomePage> {
     try {
       //var res = platform.setMethodCallHandler('notif');
       final int result = await platform.invokeMethod('getBatteryLevel');
-      batteryLevel = 'Battery level at $result % .';
+      batteryLevel = 'Battery level at $result % ';
     } on PlatformException catch (e) {
-      batteryLevel = "Failed to get battery level: '${e.message}'.";
+      batteryLevel = "Failed to get battery level: '${e.message}'";
     }
 
     setState(() {
       _batteryLevel = batteryLevel;
-    });
+    }); 
   }
 
   Future<void> _getNotification() async {
     try {
       // Used to trigger notification 
+      await platformn.invokeMethod('getNotification');
 
     } on PlatformException catch (e) {
       print("Could not display notification ");
