@@ -88,6 +88,11 @@ Widget build(BuildContext context) {
             child: Text('Get Battery Level'),
             onPressed: _getBatteryLevel,
           ),
+          RaisedButton(
+            color: Colors.blue,
+            child: Text('Get Notification'),
+            onPressed: _getNotification,
+          ),
           Text(_batteryLevel),
         ],
       ),
